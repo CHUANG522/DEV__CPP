@@ -1,44 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main (void) {
+int main(void) {
 
-	/*	char string[11] = "HUI";
-		char grap = 'H';
-		scanf(" %c",string);
+  /*	char string[11] = "HUI";
+          char grap = 'H';
+          scanf(" %c",string);
 
-		printf("%d\t %d \n", sizeof(string), sizeof(grap));
-	for (int i =0; i<sizeof(string);i++){
-		printf("%c",string[i]);
-		}*/
+          printf("%d\t %d \n", sizeof(string), sizeof(grap));
+  for (int i =0; i<sizeof(string);i++){
+          printf("%c",string[i]);
+          }*/
 
+  char *string = NULL;                                // Ö¸ï¿½ï¿½ï¿½Ã¿ï¿½
+  int string_len = 20;                                // ï¿½ï¿½ï¿½ï¿½ï¿½æ¶¨ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  int counter = 1;                                    // ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+  string = (char *)malloc(sizeof(char) * string_len); // ï¿½ï¿½Ì¬ï¿½Ú´ï¿½ï¿½ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½
+  if (string == NULL) {                               // ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½Ð¶ï¿½
+    perror(" The error is : ");
+    return 1; // return 1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  }
+  //	for (int i = 0; i < string_len; i++) {
+  // scanf("%s", string);
+  //	}
+  fgets(string, string_len, stdin); // fgetsï¿½ï¿½ï¿½ëº¯ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½Õ¸ï¿½\0
+  for (int i = 0; i < string_len; i++) {
+    printf("%c", *(string + i)); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+    if (*(string + i) == ' ') {  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
+      counter++;
+    }
+    if (*(string + i) == '\0') { // ï¿½ï¿½Ö¹Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+      break;
+    }
+  }
+  printf(" \n");
+  printf(" The words has %d ", counter);
 
-	char *string = NULL;  // Ö¸ÕëÖÃ¿Õ
-	int  string_len = 20; // ³õ²½¹æ¶¨×Ö·û´®³¤¶È
-	int counter = 1;      //µ¥´Ê¼ÆÊýÆ÷
-	string = (char *)malloc(sizeof(char) * string_len ); //¶¯Ì¬ÄÚ´æ·ÖÅä£¬ÎðÍüÀàÐÍ×ª»»
-	if (string == NULL) {	//ÉêÇë³É¹¦ÅÐ¶Ï
-		perror(" The error is : "); 
-		return 1 ;          //return 1 ÈôÉêÇëÊ§°Ü£¬ÌáÇ°ÖÕÖ¹Õû¸ö³ÌÐò
-	}
-//	for (int i = 0; i < string_len; i++) {
-	//scanf("%s", string);
-//	}
-	fgets(string, string_len, stdin);// fgetsÊäÈëº¯Êý¿ÉÊ¶±ð¿Õ¸ñ£¬\0
-	for (int i = 0; i < string_len; i++) {
-		printf("%c", *(string + i )); // ±éÀúÊä³ö×Ö·û´®
-		if ( *(string + i) == ' ') { //µ¥´ÊÊýÅÐ¶¨
-			counter ++;
-		}
-		if (*(string + i) == '\0') { //ÖÕÖ¹Ñ­»·£¬¼õÉÙÊ±¼ä
-			break;
-		}
-	}
-	printf(" \n");
-	printf(" The words has %d ", counter);
+  free(string);
+  string = NULL; // ï¿½Í·ï¿½ï¿½Ú´æ£¬Ö¸ï¿½ï¿½ï¿½Ã¿ï¿½
 
-	free(string);
-	string = NULL; //ÊÍ·ÅÄÚ´æ£¬Ö¸ÕëÖÃ¿Õ
-
-	return 0;
+  return 0;
 }
